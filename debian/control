@@ -18,4 +18,4 @@ Description: Daemon for PS3 Bluetooth Controllers
   - PS3 Keypads
  .
  sixad also registers the Sixaxis and Keypad's MAC/ID in the joystick name
- (ex: "PLAYSTATION(R)3 Controller (00:XX:X0:0X:XX)".
+ (ex: "PLAYSTATION(R)3 Gasia Controller (00:XX:X0:0X:XX)".

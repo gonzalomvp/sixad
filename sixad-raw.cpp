@@ -82,7 +82,7 @@ int main(int argc, char **argv)
         }
 
         if (msg) {
-            syslog(LOG_INFO, "Connected 'PLAYSTATION(R)3 Controller (hidraw)' [Battery %02X]", buf[31]);
+            syslog(LOG_INFO, "Connected 'PLAYSTATION(R)3 Gasia Controller (hidraw)' [Battery %02X]", buf[31]);
             if (nr == 49) syslog(LOG_INFO, "Notice: non-standard Sixaxis buffer size (49)");
             msg = false;
         }

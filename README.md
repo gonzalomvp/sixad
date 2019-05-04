@@ -11,7 +11,7 @@ Currently sixad supports:
  - PS3 BD Remotes
 
 sixad also registers the hardware's MAC/ID in the device name
-(ex: "PLAYSTATION(R)3 Controller (00:XX:X0:0X:XX)".
+(ex: "PLAYSTATION(R)3 Gasia Controller (00:XX:X0:0X:XX)".
 
 -------------------------------------
 

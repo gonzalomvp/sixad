@@ -189,7 +189,7 @@ static void process_sixaxis(struct device_settings settings, const char *mac)
         br = read(isk, buf, sizeof(buf));
 
         if (msg) {
-            syslog(LOG_INFO, "Connected 'PLAYSTATION(R)3 Controller (%s)' [Battery %02X]", mac, buf[31]);
+            syslog(LOG_INFO, "Connected 'PLAYSTATION(R)3 Gasia Controller (%s)' [Battery %02X]", mac, buf[31]);
             msg = false;
         }
         

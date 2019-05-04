@@ -66,11 +66,11 @@ struct uinput_fd *uinput_open(int DEV_TYPE, const char *mac, struct device_setti
 
     if (DEV_TYPE == DEV_TYPE_SIXAXIS) {
 #ifndef SHORT_NAME
-        strcpy(dev_name, "PLAYSTATION(R)3 Controller (");
+        strcpy(dev_name, "PLAYSTATION(R)3 Gasia Controller (");
         strcat(dev_name, mac);
         strcat(dev_name, ")");
 #else
-        strcpy(dev_name, "PLAYSTATION(R)3 Controller");
+        strcpy(dev_name, "PLAYSTATION(R)3 Gasia Controller");
 #endif
         snprintf(dev.name, sizeof(dev.name), "%s", dev_name);
         dev.id.vendor = 0x054c;
