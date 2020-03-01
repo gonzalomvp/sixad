@@ -12,16 +12,20 @@ if [ -f /tmp/sixpair.tmp ]; then
 fi
 
 params="$1"
-if hciconfig | grep -q "hci0"; then
+bt_if="hci0"
+if hciconfig | grep -q "hci1"; then
+  bt_if="hci1"
+fi
+if hciconfig | grep -q $bt_if; then
     # Check if sixad is running
     if ps -e | grep -q "sixad-bin"; then
         # activate bt dongle if necessary
         if !(hciconfig | grep -q "RUNNING"); then
-            hciconfig hci0 up
+            hciconfig $bt_if up
         fi
         # Make bt dongle discoverable
         if !(hciconfig | grep -q "PSCAN"); then
-            hciconfig hci0 pscan
+            hciconfig $bt_if pscan
         fi
         if [[ "$params" == "sixpair" ]]; then
             # Write bt dongle's mac address into controller

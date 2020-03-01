@@ -43,11 +43,19 @@ bt_device_pscan
 }
 
 bt_device_up () {
-hciconfig hci0 up
+bt_if="hci0"
+if hciconfig | grep -q "hci1"; then
+  bt_if="hci1"
+fi
+hciconfig $bt_if up
 }
 
 bt_device_pscan () {
-hciconfig hci0 pscan
+bt_if="hci0"
+if hciconfig | grep -q "hci1"; then
+  bt_if="hci1"
+fi
+hciconfig $bt_if pscan
 }
 
 sixad_running_check () {
@@ -78,6 +86,10 @@ bt_stop
 }
 
 sixad_watchdog (){
+    bt_if="hci0"
+    if hciconfig | grep -q "hci1"; then
+      bt_if="hci1"
+    fi
     echo "Watching... (5s)"
     while (true); do
         if (bt_device_checkr); then
@@ -87,11 +99,11 @@ sixad_watchdog (){
             pkill -TERM sixad-bin
             break
         fi
-        if (hciconfig hci0 | grep "DOWN" &> /dev/null); then
-          echo "Watchdog: hci0 down, re-enabling."
+        if (hciconfig $bt_if | grep "DOWN" &> /dev/null); then
+          echo "Watchdog: $bt_if down, re-enabling."
           bt_device_up
         fi
-        if ! (hciconfig hci0 | grep "PSCAN" &> /dev/null); then
+        if ! (hciconfig $bt_if | grep "PSCAN" &> /dev/null); then
           echo "Watchdog: PSCAN not set, resetting."
           bt_device_pscan
         fi
